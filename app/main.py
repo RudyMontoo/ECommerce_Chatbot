@@ -1,6 +1,7 @@
 import streamlit as st
 from router import router
 from faq import faq_chain, ingest_faq_data
+from sql import sql_chain
 from pathlib import Path
 
 # Advanced Custom CSS for Dark Theme
@@ -105,6 +106,8 @@ def ask(query):
     
     if route_name == "faq":
         return faq_chain(query)
+    elif route_name == "sql":
+        return sql_chain(query)
     elif route_name is not None:
          return f"Route **{route_name}** not implemented yet."
     else:
